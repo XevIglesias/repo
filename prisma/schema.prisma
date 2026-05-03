@@ -8,13 +8,16 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  name      String
-  role      String   @default("student")
-  createdAt DateTime @default(now())
-  attempts  ExamAttempt[]
+  id              Int       @id @default(autoincrement())
+  email           String    @unique
+  password        String
+  name            String
+  role            String    @default("student")
+  paid            Boolean   @default(false)
+  paidAt          DateTime?
+  stripeSessionId String?
+  createdAt       DateTime  @default(now())
+  attempts        ExamAttempt[]
 }
 
 model Subject {
